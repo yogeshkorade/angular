@@ -1,0 +1,24 @@
+<form action="/action_page.php" name="loginForm" #loginForm="ngForm" role="form" autocomplete="off" novalidate>
+  
+  <div class="container">
+    <h2>Login</h2>
+
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" only-alpha required [(ngModel)]="uname" #uname2="ngModel">
+    <app-error-display [displayError]="uname2.invalid && uname2.errors.required && (uname2.dirty || uname2.touched || loginForm.submitted)" errorMsg="Username is Required" ></app-error-display>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required [(ngModel)]="psw" #psw2="ngModel">
+    <app-error-display [displayError]="psw2.invalid && psw2.errors.required && (psw2.dirty || psw2.touched || loginForm.submitted)" errorMsg="Password is Required" ></app-error-display>
+
+    <button type="submit">Login</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn" routerLink="/index">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+  </div>
+</form>

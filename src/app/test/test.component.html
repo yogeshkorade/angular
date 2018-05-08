@@ -1,0 +1,50 @@
+<h3 changeText></h3>
+<form #myform="ngForm" name="myform" role="form" autocomplete="off" novalidate>
+<table>
+    <tr>
+        <td>
+            First Name
+        </td>
+        <td>
+            <input type="text" name="fname" id="fname" only-alpha required [(ngModel)]="fname1" #fname2="ngModel">
+            <app-error-display [displayError]="fname2.invalid && fname2.errors.required && (fname2.dirty || fname2.touched || myform.submitted)" errorMsg="First Name is Required" ></app-error-display>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Last Name
+        </td>
+        <td>
+            <input type="text" name="lname" id="lname" only-alpha required [(ngModel)]="lname1" #lname2="ngModel">
+            <app-error-display [displayError]="lname2.invalid && lname2.errors.required && (lname2.dirty || lname2.touched || myform.submitted)" errorMsg="Last Name is Required" ></app-error-display>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Mobile
+        </td>
+        <td>
+            <input type="text" name="mobile" id="mobile" ng-pattern ="/^[a-zA-Z\s]*$/" only-digits required [(ngModel)]="mobile1" #mobile2="ngModel">
+            <app-error-display [displayError]="mobile2.invalid && mobile2.errors.required && (mobile2.dirty || mobile2.touched || myform.submitted)" errorMsg="Mobile is Required" ></app-error-display>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Email
+        </td>
+        <td>
+            <input type="text" name="email" id="email" required [(ngModel)]="email1" #email2="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+            <app-error-display [displayError]="email2.invalid && email2.errors.required && (email2.dirty || email2.touched || myform.submitted)" errorMsg="Email is Required" ></app-error-display>
+            <div style="color:#ff0000;" *ngIf="email2.errors && email2.errors.pattern">
+                Email is invalid
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <input type="submit" name="submit" value="submit">
+        </td>
+    </tr>
+</table>
+</form> 
